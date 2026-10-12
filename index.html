@@ -1,0 +1,2509 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#021526">
+    <title>REGI MINA FARM LAMPUNG</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #021526;
+            --bg-secondary: #0a2540;
+            --bg-card: #0d2b47;
+            --bg-card-hover: #143a5c;
+            --accent: #00B4D8;
+            --accent-dark: #0077B6;
+            --accent-light: #90E0EF;
+            --green: #22c55e;
+            --gold: #FFB800;
+            --red: #ef4444;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --border: #1e3a5f;
+            --gradient: linear-gradient(135deg, #00B4D8, #0077B6);
+            --gradient-green: linear-gradient(135deg, #22c55e, #16a34a);
+            --gradient-gold: linear-gradient(135deg, #FFB800, #FF8800);
+        }
+
+        body.light-mode {
+            --bg-primary: #f0f4f8;
+            --bg-secondary: #e2e8f0;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f8fafc;
+            --text-primary: #021526;
+            --text-secondary: #64748b;
+            --border: #cbd5e1;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            background: #000;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .app {
+            width: 100%;
+            max-width: 480px;
+            background: var(--bg-primary);
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 80px;
+            overflow-x: hidden;
+            transition: background 0.3s;
+        }
+
+        /* ============ HEADER ============ */
+        .header {
+            position: sticky; top: 0;
+            background: var(--bg-primary);
+            padding: 14px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border-bottom: 1px solid rgba(30, 58, 95, 0.3);
+        }
+
+        .header-left { display: flex; align-items: center; gap: 12px; }
+
+        .menu-btn, .header-icon {
+            width: 38px; height: 38px;
+            border-radius: 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .menu-btn:active, .header-icon:active { transform: scale(0.92); }
+
+        .header-brand { display: flex; align-items: center; gap: 8px; }
+
+        .brand-logo {
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            background: white;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+            border: 2px solid var(--accent);
+            flex-shrink: 0;
+        }
+
+        .brand-logo img { width: 100%; height: 100%; object-fit: contain; padding: 2px; }
+        .brand-logo i { color: var(--accent); font-size: 1rem; }
+
+        .brand-text h1 {
+            font-size: 0.72rem; font-weight: 800;
+            color: var(--text-primary); line-height: 1.1;
+        }
+        .brand-text p {
+            font-size: 0.55rem; letter-spacing: 2px;
+            color: var(--accent-light); font-weight: 500;
+        }
+
+        .header-right { display: flex; gap: 8px; position: relative; }
+
+        .cart-badge {
+            position: absolute;
+            top: -4px; right: -4px;
+            min-width: 18px; height: 18px;
+            padding: 0 5px;
+            background: var(--red);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.62rem;
+            font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        /* ============ PAGE ============ */
+        .page { display: none; padding: 0 16px; animation: fadeIn 0.3s ease; }
+        .page.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ============ HOME ============ */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(0, 180, 216, 0.15), rgba(2, 62, 138, 0.4));
+            border-radius: 20px;
+            padding: 24px 20px;
+            margin: 16px 0 20px;
+            position: relative;
+            overflow: hidden;
+            min-height: 180px;
+        }
+
+        .hero-banner::before {
+            content: '🐟'; position: absolute;
+            font-size: 8rem; right: -20px; bottom: -30px;
+            opacity: 0.15; transform: rotate(-15deg);
+        }
+        .hero-banner::after {
+            content: '🐠'; position: absolute;
+            font-size: 4rem; right: 40px; top: 20px; opacity: 0.12;
+        }
+
+        .hero-greeting {
+            font-size: 0.72rem; color: var(--accent-light);
+            font-weight: 500; margin-bottom: 6px; letter-spacing: 0.5px;
+        }
+
+        .hero-banner h2 {
+            font-size: 1.5rem; font-weight: 800;
+            line-height: 1.15; margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .hero-banner h2 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-banner p {
+            font-size: 0.75rem; color: var(--text-secondary);
+            line-height: 1.5; margin-bottom: 16px; max-width: 60%;
+        }
+
+        .hero-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 20px; background: var(--gradient);
+            color: white; border: none; border-radius: 50px;
+            font-size: 0.78rem; font-weight: 700;
+            text-decoration: none; cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 8px 20px rgba(0, 180, 216, 0.4);
+        }
+
+        .hero-btn:active { transform: scale(0.96); }
+
+        .features-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px; margin-bottom: 24px;
+        }
+
+        .feature-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 12px 6px;
+            text-align: center;
+        }
+
+        .feature-item i {
+            font-size: 1.1rem; color: var(--accent-light);
+            margin-bottom: 6px; display: block;
+        }
+
+        .feature-item p {
+            font-size: 0.6rem; color: var(--text-secondary);
+            font-weight: 500; line-height: 1.3;
+        }
+
+        .section-title-block {
+            margin-bottom: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .section-title-block h3 {
+            font-size: 1rem; font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .section-title-block p {
+            font-size: 0.7rem; color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px; margin-bottom: 24px;
+        }
+
+        .category-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 12px 6px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .category-card:active { transform: scale(0.95); border-color: var(--accent); }
+
+        .category-card .cat-img {
+            width: 100%; aspect-ratio: 1.4;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(2, 62, 138, 0.3));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; margin-bottom: 8px;
+            overflow: hidden;
+        }
+
+        .category-card .cat-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        .category-card h4 {
+            font-size: 0.7rem; font-weight: 700;
+            color: var(--text-primary); line-height: 1.2;
+        }
+
+        /* PROMO BANNER */
+        .promo-banner-app {
+            background: var(--gradient-gold);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            box-shadow: 0 8px 25px rgba(255, 184, 0, 0.3);
+        }
+
+        .promo-info { color: #000; flex: 1; }
+        .promo-info h4 { font-size: 0.85rem; font-weight: 800; margin-bottom: 3px; }
+        .promo-info p { font-size: 0.68rem; opacity: 0.85; }
+
+        .promo-timer-mini {
+            display: flex; gap: 4px; flex-shrink: 0;
+        }
+
+        .timer-mini {
+            background: rgba(0,0,0,0.85); color: white;
+            padding: 5px 8px; border-radius: 8px;
+            text-align: center; min-width: 32px;
+        }
+
+        .timer-mini .n { font-size: 0.85rem; font-weight: 800; line-height: 1; }
+        .timer-mini .l { font-size: 0.5rem; opacity: 0.7; }
+
+        /* ============ PRODUCTS ============ */
+        .category-hero {
+            background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(2, 62, 138, 0.4));
+            border-radius: 18px;
+            padding: 20px;
+            margin: 16px 0 18px;
+            position: relative;
+            overflow: hidden;
+            min-height: 130px;
+        }
+
+        .category-hero::before {
+            content: attr(data-emoji);
+            position: absolute;
+            font-size: 6rem; right: -10px; bottom: -20px;
+            opacity: 0.25;
+        }
+
+        .category-hero h3 {
+            font-size: 1.2rem; font-weight: 800;
+            margin-bottom: 6px; position: relative; z-index: 1;
+            color: var(--text-primary);
+        }
+
+        .category-hero p {
+            font-size: 0.72rem; color: var(--text-secondary);
+            line-height: 1.5; max-width: 65%;
+            position: relative; z-index: 1;
+        }
+
+        .filter-chips {
+            display: flex; gap: 8px;
+            overflow-x: auto; padding-bottom: 8px;
+            margin-bottom: 16px; scrollbar-width: none;
+        }
+        .filter-chips::-webkit-scrollbar { display: none; }
+
+        .chip {
+            padding: 7px 18px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--text-secondary);
+            font-size: 0.72rem; font-weight: 600;
+            white-space: nowrap; cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .chip.active {
+            background: var(--gradient);
+            color: white; border-color: transparent;
+            box-shadow: 0 5px 15px rgba(0, 180, 216, 0.4);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px; margin-bottom: 20px;
+        }
+
+        .product-card-app {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.25s;
+        }
+
+        .product-card-app:active { transform: scale(0.97); border-color: var(--accent); }
+
+        .product-img-app {
+            width: 100%; aspect-ratio: 1.2;
+            background: linear-gradient(135deg, rgba(0, 180, 216, 0.15), rgba(2, 62, 138, 0.3));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 3rem; position: relative; overflow: hidden;
+        }
+
+        .product-img-app img { width: 100%; height: 100%; object-fit: cover; }
+
+        .badge-app {
+            position: absolute;
+            top: 8px; left: 8px;
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 0.58rem; font-weight: 800;
+            letter-spacing: 0.5px; text-transform: uppercase;
+            color: #000;
+        }
+        .badge-app.bestseller, .badge-app.promo { background: var(--gradient-gold); }
+        .badge-app.baru { background: var(--gradient); color: white; }
+
+        .product-body-app { padding: 10px 12px 12px; }
+
+        .product-name-app {
+            font-size: 0.78rem; font-weight: 700;
+            line-height: 1.3; margin-bottom: 6px;
+            color: var(--text-primary); min-height: 32px;
+        }
+
+        .product-price-label {
+            font-size: 0.62rem; color: var(--text-secondary);
+            margin-bottom: 2px;
+        }
+
+        .product-price-app {
+            font-size: 0.95rem; font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 6px; line-height: 1.1;
+        }
+
+        .product-price-app small {
+            font-size: 0.6rem; color: var(--text-secondary);
+            font-weight: 500;
+            -webkit-text-fill-color: var(--text-secondary);
+        }
+
+        .product-stock-app {
+            display: flex; align-items: center;
+            gap: 5px; font-size: 0.62rem;
+            color: var(--text-secondary); margin-bottom: 4px;
+        }
+
+        .stock-dot-app {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 6px var(--green);
+        }
+
+        .product-min-app {
+            font-size: 0.6rem; color: var(--text-secondary);
+            margin-bottom: 10px;
+            display: flex; align-items: center; gap: 4px;
+        }
+        .product-min-app i { color: var(--accent-light); font-size: 0.55rem; }
+
+        .btn-pesan-app {
+            width: 100%; padding: 8px;
+            background: var(--gradient-green);
+            color: white; border: none;
+            border-radius: 10px;
+            font-size: 0.7rem; font-weight: 700;
+            cursor: pointer;
+            display: flex; align-items: center;
+            justify-content: center; gap: 6px;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-pesan-app:active { transform: scale(0.96); }
+
+        /* ============ CATEGORY LIST ============ */
+        .category-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+
+        .category-list-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .category-list-item:active { background: var(--bg-card-hover); border-color: var(--accent); }
+
+        .category-list-img {
+            width: 70px; height: 70px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(2, 62, 138, 0.3));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2.2rem; flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .category-list-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        .category-list-info { flex: 1; min-width: 0; }
+        .category-list-info h4 {
+            font-size: 0.9rem; font-weight: 700;
+            margin-bottom: 3px; color: var(--text-primary);
+        }
+        .category-list-info p {
+            font-size: 0.7rem; color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .category-list-item > i { color: var(--text-secondary); font-size: 0.85rem; }
+
+        /* ============ PAGE HEADER ============ */
+        .page-header {
+            padding: 4px 0 16px;
+            display: flex; align-items: center; gap: 12px;
+        }
+
+        .back-btn {
+            width: 38px; height: 38px;
+            border-radius: 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.9rem; cursor: pointer;
+        }
+
+        .back-btn:active { transform: scale(0.92); }
+
+        .page-header h2 {
+            font-size: 1.05rem; font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* ============ BOTTOM NAV ============ */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 100%; max-width: 480px;
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            padding: 8px 0 10px;
+            z-index: 90;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-item {
+            display: flex; flex-direction: column;
+            align-items: center; gap: 3px;
+            cursor: pointer; padding: 4px;
+            position: relative; transition: all 0.2s;
+        }
+
+        .nav-item i {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            transition: all 0.25s;
+        }
+
+        .nav-item span {
+            font-size: 0.6rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: all 0.25s;
+        }
+
+        .nav-item.active i { color: var(--accent); transform: translateY(-2px); }
+        .nav-item.active span { color: var(--accent); font-weight: 700; }
+
+        .nav-item .nav-cart-badge {
+            position: absolute;
+            top: -2px; right: calc(50% - 18px);
+            min-width: 16px; height: 16px;
+            padding: 0 4px;
+            background: var(--red);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.55rem;
+            font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        /* ============ MODAL ============ */
+        .modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(6px);
+            z-index: 2000;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            opacity: 0; visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+
+        .modal {
+            width: 100%; max-width: 480px;
+            background: var(--bg-primary);
+            border-radius: 24px 24px 0 0;
+            padding: 24px 20px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            border-top: 2px solid var(--accent);
+        }
+
+        .modal-overlay.active .modal { transform: translateY(0); }
+
+        .modal-handle {
+            width: 40px; height: 4px;
+            background: var(--border);
+            border-radius: 50px;
+            margin: 0 auto 20px;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 1.1rem; font-weight: 800;
+            display: flex; align-items: center; gap: 10px;
+            color: var(--text-primary);
+        }
+        .modal-title i { color: var(--accent); }
+
+        .modal-close {
+            width: 36px; height: 36px;
+            border-radius: 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; font-size: 0.9rem;
+        }
+
+        /* ============ ADMIN TABS ============ */
+        .admin-tabs-app {
+            display: flex; gap: 6px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+            scrollbar-width: none;
+        }
+        .admin-tabs-app::-webkit-scrollbar { display: none; }
+
+        .admin-tab-app {
+            padding: 8px 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text-secondary);
+            font-size: 0.72rem; font-weight: 600;
+            white-space: nowrap; cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            display: flex; align-items: center; gap: 6px;
+        }
+
+        .admin-tab-app.active {
+            background: var(--gradient);
+            color: white; border-color: transparent;
+        }
+
+        .admin-panel-app { display: none; }
+        .admin-panel-app.active { display: block; animation: fadeIn 0.3s; }
+
+        /* ============ ADMIN LIST ============ */
+        .admin-item-app {
+            display: flex; align-items: center;
+            gap: 10px; padding: 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+
+        .admin-item-app .icon-app {
+            width: 38px; height: 38px;
+            border-radius: 10px;
+            background: var(--bg-secondary);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; flex-shrink: 0;
+        }
+
+        .admin-item-app .info-app { flex: 1; min-width: 0; }
+        .admin-item-app .name-app {
+            font-size: 0.78rem; font-weight: 700;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: var(--text-primary);
+        }
+        .admin-item-app .meta-app {
+            font-size: 0.65rem; color: var(--text-secondary);
+        }
+
+        .icon-btn-app {
+            width: 30px; height: 30px;
+            border-radius: 8px; border: none;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.72rem; cursor: pointer;
+        }
+
+        .icon-btn-app.edit { background: rgba(0, 180, 216, 0.15); color: var(--accent); }
+        .icon-btn-app.edit:active { background: var(--accent); color: white; }
+        .icon-btn-app.delete { background: rgba(239, 68, 68, 0.15); color: var(--red); }
+        .icon-btn-app.delete:active { background: var(--red); color: white; }
+
+        .btn-add-app {
+            width: 100%; padding: 11px;
+            background: var(--gradient);
+            color: white; border: none;
+            border-radius: 12px;
+            font-size: 0.8rem; font-weight: 700;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            display: flex; align-items: center; justify-content: center;
+            gap: 8px; margin-bottom: 14px;
+        }
+
+        /* ============ FORM ============ */
+        .form-group { margin-bottom: 14px; text-align: left; }
+
+        .form-label {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--accent-light);
+            margin-bottom: 6px;
+        }
+
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            padding: 11px 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 0.82rem;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+        }
+
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.15);
+        }
+
+        .form-textarea { resize: vertical; min-height: 70px; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .btn-submit-app {
+            width: 100%; padding: 13px;
+            background: var(--gradient);
+            color: white; border: none;
+            border-radius: 12px;
+            font-size: 0.88rem; font-weight: 700;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            margin-top: 8px;
+            display: flex; align-items: center; justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-submit-app.danger { background: linear-gradient(135deg, #ef4444, #b91c1c); }
+        .btn-submit-app.gray { background: var(--bg-card); border: 1px solid var(--border); }
+
+        /* ============ CART ============ */
+        .cart-item-app {
+            display: flex; align-items: center;
+            gap: 10px; padding: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            margin-bottom: 10px;
+        }
+
+        .cart-emoji {
+            width: 50px; height: 50px;
+            border-radius: 12px;
+            background: var(--bg-secondary);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .cart-emoji img { width: 100%; height: 100%; object-fit: cover; }
+
+        .cart-info { flex: 1; min-width: 0; }
+        .cart-name { font-size: 0.8rem; font-weight: 700; margin-bottom: 3px; color: var(--text-primary); }
+        .cart-price { font-size: 0.7rem; color: var(--gold); font-weight: 600; }
+
+        .cart-qty {
+            display: flex; align-items: center; gap: 4px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 8px; padding: 2px;
+        }
+
+        .qty-btn-app {
+            width: 26px; height: 26px;
+            border-radius: 6px; background: transparent;
+            border: none; color: var(--accent-light);
+            cursor: pointer; font-size: 0.7rem;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .qty-btn-app:active { background: var(--accent); color: white; }
+
+        .qty-val-app {
+            min-width: 24px; text-align: center;
+            font-size: 0.78rem; font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .cart-remove {
+            width: 30px; height: 30px;
+            border-radius: 8px;
+            background: rgba(239, 68, 68, 0.15);
+            border: none; color: var(--red);
+            cursor: pointer; font-size: 0.75rem;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .cart-total-app {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            background: rgba(255, 184, 0, 0.08);
+            border: 1px dashed var(--gold);
+            border-radius: 14px;
+            margin: 16px 0;
+        }
+
+        .cart-total-app .label {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+        .cart-total-app .value {
+            font-size: 1.2rem; font-weight: 800;
+            color: var(--gold);
+        }
+
+        .btn-checkout {
+            width: 100%; padding: 14px;
+            background: var(--gradient-green);
+            color: white; border: none;
+            border-radius: 14px;
+            font-size: 0.88rem; font-weight: 700;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            display: flex; align-items: center; justify-content: center;
+            gap: 8px;
+        }
+
+        /* ============ EMPTY ============ */
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+        }
+        .empty-state i {
+            font-size: 3rem; color: var(--border);
+            margin-bottom: 12px;
+        }
+        .empty-state p { font-size: 0.82rem; }
+
+        /* ============ PROFILE ============ */
+        .profile-header {
+            background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(2, 62, 138, 0.4));
+            border-radius: 20px;
+            padding: 24px 20px;
+            text-align: center;
+            margin: 16px 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-avatar {
+            width: 90px; height: 90px;
+            border-radius: 50%;
+            background: white;
+            margin: 0 auto 12px;
+            display: flex; align-items: center; justify-content: center;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 30px rgba(0, 180, 216, 0.5);
+            overflow: hidden;
+            padding: 6px;
+        }
+
+        .profile-avatar img { width: 100%; height: 100%; object-fit: contain; }
+        .profile-avatar i { font-size: 2.5rem; color: var(--accent); }
+
+        .profile-name {
+            font-size: 1.2rem; font-weight: 800;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+
+        .profile-role {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .profile-crown {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 5px 14px;
+            background: rgba(255, 184, 0, 0.15);
+            border: 1px solid rgba(255, 184, 0, 0.3);
+            border-radius: 50px;
+            font-size: 0.68rem; color: var(--gold);
+            font-weight: 600;
+        }
+
+        .profile-menu { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+
+        .profile-menu-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px 16px;
+            display: flex; align-items: center;
+            gap: 12px; cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .profile-menu-item:active { background: var(--bg-card-hover); }
+
+        .profile-menu-item .icon-box {
+            width: 40px; height: 40px;
+            border-radius: 12px;
+            background: var(--bg-secondary);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--accent-light);
+            font-size: 1rem;
+        }
+
+        .profile-menu-item .menu-text { flex: 1; }
+        .profile-menu-item .menu-text h4 {
+            font-size: 0.85rem; font-weight: 700;
+            margin-bottom: 2px;
+            color: var(--text-primary);
+        }
+        .profile-menu-item .menu-text p {
+            font-size: 0.68rem;
+            color: var(--text-secondary);
+        }
+        .profile-menu-item > i {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        /* ============ TOAST ============ */
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: 12px;
+            padding: 12px 18px;
+            display: flex; align-items: center;
+            gap: 10px; font-size: 0.82rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            z-index: 3000;
+            opacity: 0;
+            transition: all 0.35s;
+            pointer-events: none;
+            max-width: 90%;
+            color: var(--text-primary);
+        }
+
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .toast.success { border-left-color: var(--green); }
+        .toast.success i { color: var(--green); }
+        .toast.error { border-left-color: var(--red); }
+        .toast.error i { color: var(--red); }
+        .toast.info { border-left-color: var(--accent); }
+        .toast.info i { color: var(--accent); }
+
+        /* ============ SIDEBAR ============ */
+        .sidebar-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1500;
+            opacity: 0; visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .sidebar-overlay.active { opacity: 1; visibility: visible; }
+
+        .sidebar {
+            position: fixed; top: 0; left: 0;
+            width: 280px; height: 100vh;
+            background: var(--bg-primary);
+            border-right: 1px solid var(--border);
+            z-index: 1600;
+            transform: translateX(-100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 24px 20px;
+            overflow-y: auto;
+        }
+
+        .sidebar.active { transform: translateX(0); }
+
+        .sidebar-header {
+            display: flex; align-items: center;
+            gap: 12px; padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .sidebar-nav { display: flex; flex-direction: column; gap: 4px; }
+
+        .sidebar-nav-item {
+            display: flex; align-items: center;
+            gap: 14px; padding: 12px 14px;
+            border-radius: 12px;
+            color: var(--text-secondary);
+            font-size: 0.85rem; font-weight: 500;
+            cursor: pointer; transition: all 0.2s;
+        }
+
+        .sidebar-nav-item i { width: 20px; text-align: center; font-size: 0.9rem; }
+        .sidebar-nav-item:active, .sidebar-nav-item:hover {
+            background: var(--bg-card);
+            color: var(--accent-light);
+        }
+
+        /* ============ ADMIN FAB ============ */
+        .admin-fab-mini {
+            position: fixed; bottom: 90px; right: 16px;
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            background: var(--gradient-gold);
+            color: #000; border: none;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; cursor: pointer;
+            z-index: 95;
+            box-shadow: 0 6px 20px rgba(255, 184, 0, 0.5);
+        }
+
+        /* ============ LOGIN ============ */
+        .login-box { text-align: center; padding: 20px 0; }
+
+        .login-icon-app {
+            width: 90px; height: 90px;
+            border-radius: 50%;
+            background: white;
+            margin: 0 auto 16px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 40px rgba(0, 180, 216, 0.5);
+            padding: 8px; overflow: hidden;
+        }
+
+        .login-icon-app img { width: 100%; height: 100%; object-fit: contain; }
+        .login-icon-app i { font-size: 2.5rem; color: var(--gold); }
+
+        .login-box h2 {
+            font-size: 1.2rem; font-weight: 800;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+
+        .login-box p {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            margin-bottom: 22px;
+        }
+
+        .login-hint {
+            margin-top: 16px;
+            padding: 10px;
+            background: rgba(255, 184, 0, 0.08);
+            border: 1px dashed rgba(255, 184, 0, 0.4);
+            border-radius: 10px;
+            font-size: 0.68rem;
+            color: var(--text-secondary);
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        .login-hint strong { color: var(--gold); }
+
+        /* ============ MISC ============ */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-secondary); }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+
+        .helper-text {
+            font-size: 0.68rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        .danger-zone {
+            margin-top: 22px;
+            padding-top: 22px;
+            border-top: 1px solid var(--border);
+        }
+
+        .danger-zone h4 {
+            font-size: 0.85rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        /* ============ TESTIMONI / BLOG / GALERI CARDS ============ */
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px;
+            margin-bottom: 10px;
+        }
+
+        .info-card .head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .info-card .title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .info-card .subtitle {
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .info-card .body {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .info-card .stars {
+            color: var(--gold);
+            font-size: 0.75rem;
+        }
+
+        .info-card .actions {
+            display: flex;
+            gap: 6px;
+            margin-top: 10px;
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+                <div class="header-brand">
+                    <div class="brand-logo">
+                        <img src="logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <i class="fas fa-fish" style="display:none;"></i>
+                    </div>
+                    <div class="brand-text">
+                        <h1 id="hBrandName">REGI MINA FARM</h1>
+                        <p id="hBrandTag">LAMPUNG</p>
+                    </div>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="header-icon" id="themeToggle"><i class="fas fa-moon"></i></button>
+                <button class="header-icon" id="cartBtn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- PAGE: HOME -->
+        <div class="page active" id="page-home">
+            <div class="hero-banner">
+                <div class="hero-greeting">Akan Resmi</div>
+                <h2 id="heroTitle">REGI MINA FARM<br><span>LAMPUNG</span></h2>
+                <p id="heroDesc">Menyediakan ikan segar, bibit unggul, dan pakan berkualitas langsung dari farm.</p>
+                <button class="hero-btn" onclick="showPage('categories')">
+                    Belanja Sekarang <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- Promo -->
+            <div class="promo-banner-app" id="promoBanner" style="display: none;">
+                <div class="promo-info">
+                    <h4>🎉 <span id="promoTitleText">PROMO!</span></h4>
+                    <p id="promoDescText">Diskon spesial</p>
+                </div>
+                <div class="promo-timer-mini">
+                    <div class="timer-mini"><div class="n" id="tD">00</div><div class="l">Hari</div></div>
+                    <div class="timer-mini"><div class="n" id="tH">00</div><div class="l">Jam</div></div>
+                    <div class="timer-mini"><div class="n" id="tM">00</div><div class="l">Mnt</div></div>
+                </div>
+            </div>
+
+            <div class="features-strip">
+                <div class="feature-item"><i class="fas fa-shield-alt"></i><p>Produk Berkualitas</p></div>
+                <div class="feature-item"><i class="fas fa-tags"></i><p>Harga Terbaik</p></div>
+                <div class="feature-item"><i class="fas fa-truck"></i><p>Pengiriman Cepat</p></div>
+                <div class="feature-item"><i class="fas fa-headset"></i><p>Layanan Ramah</p></div>
+            </div>
+
+            <div class="section-title-block">
+                <div>
+                    <h3>Kategori Produk</h3>
+                    <p>Pilih kategori sesuai kebutuhan Anda</p>
+                </div>
+            </div>
+            <div class="category-grid" id="homeCategoryGrid"></div>
+
+            <!-- Testimoni Ringkas -->
+            <div class="section-title-block" style="margin-top: 24px;">
+                <div>
+                    <h3>Testimoni Pelanggan</h3>
+                    <p>Kata mereka tentang kami</p>
+                </div>
+            </div>
+            <div id="homeTestimonials" style="margin-bottom: 24px;"></div>
+        </div>
+
+        <!-- PAGE: CATEGORIES -->
+        <div class="page" id="page-categories">
+            <div class="page-header">
+                <h2>Kategori Produk</h2>
+            </div>
+            <p style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 16px;">Pilih kategori sesuai kebutuhan Anda</p>
+            <div class="category-list" id="categoriesList"></div>
+        </div>
+
+        <!-- PAGE: PRODUCTS -->
+        <div class="page" id="page-products">
+            <div class="page-header">
+                <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></button>
+                <h2 id="prodPageTitle">Produk</h2>
+            </div>
+            <div class="category-hero" id="prodHero" data-emoji="🐟">
+                <h3 id="prodHeroTitle">Kategori</h3>
+                <p id="prodHeroDesc">Deskripsi kategori</p>
+            </div>
+            <div class="filter-chips" id="filterChips"></div>
+            <div class="product-grid" id="productGrid"></div>
+        </div>
+
+        <!-- PAGE: CART -->
+        <div class="page" id="page-cart">
+            <div class="page-header">
+                <h2>Keranjang Belanja</h2>
+            </div>
+            <div id="cartContainer"></div>
+        </div>
+
+        <!-- PAGE: PROFILE -->
+        <div class="page" id="page-profile">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <img src="logo.png" alt="Owner" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <i class="fas fa-user-tie" style="display:none;"></i>
+                </div>
+                <div class="profile-name" id="pOwnerName">M. Regi Maulana</div>
+                <div class="profile-role" id="pOwnerRole">Founder & Owner</div>
+                <div class="profile-crown"><i class="fas fa-crown"></i><span>Pemilik & Pengelola</span></div>
+            </div>
+
+            <div class="profile-menu">
+                <div class="profile-menu-item" onclick="showPage('about')">
+                    <div class="icon-box"><i class="fas fa-info-circle"></i></div>
+                    <div class="menu-text"><h4>Tentang Kami</h4><p>Kenali REGI MINA FARM lebih dekat</p></div>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="profile-menu-item" onclick="showPage('faq')">
+                    <div class="icon-box"><i class="fas fa-question-circle"></i></div>
+                    <div class="menu-text"><h4>FAQ</h4><p>Pertanyaan yang sering ditanyakan</p></div>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="profile-menu-item" onclick="showPage('booking')">
+                    <div class="icon-box"><i class="fas fa-calendar-check"></i></div>
+                    <div class="menu-text"><h4>Booking Kunjungan</h4><p>Jadwalkan kunjungan ke kolam</p></div>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="profile-menu-item" onclick="showPage('calculator')">
+                    <div class="icon-box"><i class="fas fa-calculator"></i></div>
+                    <div class="menu-text"><h4>Kalkulator Budidaya</h4><p>Estimasi pakan & keuntungan</p></div>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="profile-menu-item" onclick="openWA()">
+                    <div class="icon-box" style="background: rgba(37, 211, 102, 0.15); color: #25D366;"><i class="fab fa-whatsapp"></i></div>
+                    <div class="menu-text"><h4>Hubungi Kami</h4><p>Chat via WhatsApp</p></div>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="profile-menu-item" onclick="showPage('contact')">
+                    <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="menu-text"><h4>Lokasi & Kontak</h4><p>Alamat dan peta lokasi</p></div>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE: ABOUT -->
+        <div class="page" id="page-about">
+            <div class="page-header">
+                <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></button>
+                <h2>Tentang Kami</h2>
+            </div>
+            <div class="category-hero" data-emoji="🐟" style="min-height: auto; padding: 24px;">
+                <h3 id="aboutTitle">REGI MINA FARM</h3>
+                <p id="aboutDesc" style="max-width: 100%;"></p>
+            </div>
+            <div class="profile-menu" id="aboutFeatures"></div>
+        </div>
+
+        <!-- PAGE: FAQ -->
+        <div class="page" id="page-faq">
+            <div class="page-header">
+                <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></button>
+                <h2>FAQ</h2>
+            </div>
+            <div id="faqContainer"></div>
+        </div>
+
+        <!-- PAGE: BOOKING -->
+        <div class="page" id="page-booking">
+            <div class="page-header">
+                <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></button>
+                <h2>Booking Kunjungan</h2>
+            </div>
+            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px;">
+                <div class="form-group">
+                    <label class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-input" id="bkName" placeholder="Nama Anda">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">No. WhatsApp</label>
+                    <input type="tel" class="form-input" id="bkPhone" placeholder="08xxxxxxxxxx">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Tanggal</label>
+                    <input type="date" class="form-input" id="bkDate">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Jam</label>
+                    <input type="time" class="form-input" id="bkTime" value="09:00">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Jumlah Orang</label>
+                    <input type="number" class="form-input" id="bkPeople" value="2" min="1">
+                </div>
+                <button class="btn-submit-app" onclick="submitBooking()">
+                    <i class="fab fa-whatsapp"></i> Booking via WhatsApp
+                </button>
+            </div>
+        </div>
+
+        <!-- PAGE: CALCULATOR -->
+        <div class="page" id="page-calculator">
+            <div class="page-header">
+                <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></button>
+                <h2>Kalkulator Budidaya</h2>
+            </div>
+            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px;">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Jumlah Bibit</label>
+                        <input type="number" class="form-input" id="calcBibit" value="1000">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Jenis Ikan</label>
+                        <select class="form-input" id="calcJenis">
+                            <option value="lele">Lele (60 hari)</option>
+                            <option value="nila">Nila (90 hari)</option>
+                            <option value="gurame">Gurame (180 hari)</option>
+                            <option value="mas">Mas (120 hari)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Harga Jual per Kg (Rp)</label>
+                    <input type="number" class="form-input" id="calcHarga" value="25000">
+                </div>
+                <button class="btn-submit-app" onclick="hitungKalkulator()">
+                    <i class="fas fa-calculator"></i> Hitung Estimasi
+                </button>
+                <div id="calcResult" style="display:none; margin-top:16px; padding:16px; background:rgba(0,180,216,0.05); border:1px dashed var(--accent); border-radius:12px;">
+                    <h4 style="font-size:0.85rem; margin-bottom:10px; color:var(--accent-light);">
+                        <i class="fas fa-chart-line"></i> Hasil Estimasi
+                    </h4>
+                    <div id="calcResultContent"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE: CONTACT -->
+        <div class="page" id="page-contact">
+            <div class="page-header">
+                <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></button>
+                <h2>Lokasi & Kontak</h2>
+            </div>
+            <div class="profile-menu" id="contactInfo"></div>
+            <div style="border-radius: 16px; overflow: hidden; border: 2px solid var(--border); height: 280px; margin-top: 16px;">
+                <iframe id="mapFrame" src="" style="width: 100%; height: 100%; border: none;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- BOTTOM NAV -->
+    <nav class="bottom-nav">
+        <div class="nav-item active" data-nav="home" onclick="showPage('home')">
+            <i class="fas fa-home"></i><span>Beranda</span>
+        </div>
+        <div class="nav-item" data-nav="categories" onclick="showPage('categories')">
+            <i class="fas fa-th-large"></i><span>Kategori</span>
+        </div>
+        <div class="nav-item" data-nav="cart" onclick="showPage('cart')">
+            <i class="fas fa-shopping-cart"></i><span>Keranjang</span>
+            <div class="nav-cart-badge" id="navCartBadge" style="display:none;">0</div>
+        </div>
+        <div class="nav-item" data-nav="faq" onclick="showPage('faq')">
+            <i class="fas fa-question-circle"></i><span>FAQ</span>
+        </div>
+        <div class="nav-item" data-nav="profile" onclick="showPage('profile')">
+            <i class="fas fa-user"></i><span>Profil</span>
+        </div>
+    </nav>
+
+    <!-- ADMIN FAB -->
+    <button class="admin-fab-mini" id="adminFab" title="Panel Admin">
+        <i class="fas fa-lock"></i>
+    </button>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="brand-logo">
+                <img src="logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <i class="fas fa-fish" style="display:none;"></i>
+            </div>
+            <div class="brand-text">
+                <h1 id="sBrandName">REGI MINA FARM</h1>
+                <p id="sBrandTag">LAMPUNG</p>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-nav-item" onclick="closeSidebar(); showPage('home')"><i class="fas fa-home"></i> Beranda</div>
+            <div class="sidebar-nav-item" onclick="closeSidebar(); showPage('categories')"><i class="fas fa-th-large"></i> Kategori</div>
+            <div class="sidebar-nav-item" onclick="closeSidebar(); showPage('cart')"><i class="fas fa-shopping-cart"></i> Keranjang</div>
+            <div class="sidebar-nav-item" onclick="closeSidebar(); showPage('about')"><i class="fas fa-info-circle"></i> Tentang Kami</div>
+            <div class="sidebar-nav-item" onclick="closeSidebar(); showPage('faq')"><i class="fas fa-question-circle"></i> FAQ</div>
+            <div class="sidebar-nav-item" onclick="closeSidebar(); showPage('booking')"><i class="fas fa-calendar-check"></i> Booking</div>
+            <div class="sidebar-nav-item" onclick="closeSidebar(); showPage('calculator')"><i class="fas fa-calculator"></i> Kalkulator</div>
+            <div class="sidebar-nav-item" onclick="closeSidebar(); showPage('contact')"><i class="fas fa-map-marker-alt"></i> Kontak</div>
+            <div class="sidebar-nav-item" onclick="closeSidebar(); openWA()"><i class="fab fa-whatsapp"></i> Chat WhatsApp</div>
+        </nav>
+    </aside>
+
+    <!-- ADMIN MODAL -->
+    <div class="modal-overlay" id="adminModal">
+        <div class="modal" style="max-height: 92vh;">
+            <div class="modal-handle"></div>
+            <div class="modal-header">
+                <div class="modal-title"><i class="fas fa-shield-alt"></i> <span id="adminTitleText">Panel Admin</span></div>
+                <button class="modal-close" onclick="closeModal('adminModal')"><i class="fas fa-times"></i></button>
+            </div>
+
+            <!-- LOGIN VIEW -->
+            <div id="adminLoginView">
+                <div class="login-box">
+                    <div class="login-icon-app">
+                        <img src="logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <i class="fas fa-user-shield" style="display:none;"></i>
+                    </div>
+                    <h2>Login Admin</h2>
+                    <p>Masukkan kredensial</p>
+                    <div class="form-group">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-input" id="loginUser" placeholder="admin">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" id="loginPass" placeholder="••••••">
+                    </div>
+                    <button class="btn-submit-app" onclick="doLogin()">
+                        <i class="fas fa-sign-in-alt"></i> Masuk
+                    </button>
+                    <div class="login-hint">
+                        <strong>🔑 Default:</strong><br>
+                        User: <strong>admin</strong> / Pass: <strong>regi2025</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DASHBOARD VIEW -->
+            <div id="adminDashView" style="display: none;">
+                <div class="admin-tabs-app">
+                    <button class="admin-tab-app active" data-atab="dashboard"><i class="fas fa-chart-line"></i> Dashboard</button>
+                    <button class="admin-tab-app" data-atab="products"><i class="fas fa-fish"></i> Produk</button>
+                    <button class="admin-tab-app" data-atab="categories"><i class="fas fa-th-large"></i> Kategori</button>
+                    <button class="admin-tab-app" data-atab="testimonials"><i class="fas fa-star"></i> Testimoni</button>
+                    <button class="admin-tab-app" data-atab="faq"><i class="fas fa-question-circle"></i> FAQ</button>
+                    <button class="admin-tab-app" data-atab="brand"><i class="fas fa-store"></i> Brand</button>
+                    <button class="admin-tab-app" data-atab="owner"><i class="fas fa-user-tie"></i> Owner</button>
+                    <button class="admin-tab-app" data-atab="contact"><i class="fas fa-address-book"></i> Kontak</button>
+                    <button class="admin-tab-app" data-atab="promo"><i class="fas fa-gift"></i> Promo</button>
+                    <button class="admin-tab-app" data-atab="settings"><i class="fas fa-cog"></i> Setelan</button>
+                </div>
+
+                <!-- Dashboard -->
+                <div class="admin-panel-app active" id="apanel-dashboard">
+                    <div id="dashStats" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;"></div>
+                </div>
+
+                <!-- Products -->
+                <div class="admin-panel-app" id="apanel-products">
+                    <button class="btn-add-app" onclick="editProduct(-1)">
+                        <i class="fas fa-plus"></i> Tambah Produk
+                    </button>
+                    <div id="adminProductsList"></div>
+                </div>
+
+                <!-- Categories -->
+                <div class="admin-panel-app" id="apanel-categories">
+                    <button class="btn-add-app" onclick="editCategory(-1)">
+                        <i class="fas fa-plus"></i> Tambah Kategori
+                    </button>
+                    <div id="adminCategoriesList"></div>
+                </div>
+
+                <!-- Testimonials -->
+                <div class="admin-panel-app" id="apanel-testimonials">
+                    <button class="btn-add-app" onclick="editTestimonial(-1)">
+                        <i class="fas fa-plus"></i> Tambah Testimoni
+                    </button>
+                    <div id="adminTestimonialsList"></div>
+                </div>
+
+                <!-- FAQ -->
+                <div class="admin-panel-app" id="apanel-faq">
+                    <button class="btn-add-app" onclick="editFaq(-1)">
+                        <i class="fas fa-plus"></i> Tambah FAQ
+                    </button>
+                    <div id="adminFaqList"></div>
+                </div>
+
+                <!-- Brand -->
+                <div class="admin-panel-app" id="apanel-brand">
+                    <div class="form-group"><label class="form-label">Nama Brand</label><input type="text" class="form-input" id="aBrandName"></div>
+                    <div class="form-group"><label class="form-label">Tagline</label><input type="text" class="form-input" id="aBrandTag"></div>
+                    <div class="form-group"><label class="form-label">Judul Hero</label><input type="text" class="form-input" id="aHeroTitle"></div>
+                    <div class="form-group"><label class="form-label">Deskripsi Hero</label><textarea class="form-textarea" id="aHeroDesc"></textarea></div>
+                    <div class="form-group"><label class="form-label">Deskripsi About</label><textarea class="form-textarea" id="aAboutDesc"></textarea></div>
+                    <button class="btn-submit-app" onclick="saveBrand()"><i class="fas fa-save"></i> Simpan Brand</button>
+                </div>
+
+                <!-- Owner -->
+                <div class="admin-panel-app" id="apanel-owner">
+                    <div class="form-group"><label class="form-label">Nama Owner</label><input type="text" class="form-input" id="aOwnerName"></div>
+                    <div class="form-group"><label class="form-label">Jabatan</label><input type="text" class="form-input" id="aOwnerRole"></div>
+                    <button class="btn-submit-app" onclick="saveOwner()"><i class="fas fa-save"></i> Simpan Owner</button>
+                </div>
+
+                <!-- Contact -->
+                <div class="admin-panel-app" id="apanel-contact">
+                    <div class="form-group"><label class="form-label">Nomor WhatsApp (628xxx)</label><input type="text" class="form-input" id="aWaNumber"></div>
+                    <div class="form-group"><label class="form-label">Alamat</label><input type="text" class="form-input" id="aAddress"></div>
+                    <div class="form-group"><label class="form-label">Maps Embed URL</label><textarea class="form-textarea" id="aMapUrl"></textarea></div>
+                    <div class="form-group"><label class="form-label">Instagram URL</label><input type="text" class="form-input" id="aIgUrl"></div>
+                    <div class="form-group"><label class="form-label">Facebook URL</label><input type="text" class="form-input" id="aFbUrl"></div>
+                    <div class="form-group"><label class="form-label">TikTok URL</label><input type="text" class="form-input" id="aTtUrl"></div>
+                    <button class="btn-submit-app" onclick="saveContact()"><i class="fas fa-save"></i> Simpan Kontak</button>
+                </div>
+
+                <!-- Promo -->
+                <div class="admin-panel-app" id="apanel-promo">
+                    <div class="form-group">
+                        <label class="form-label">Status Promo</label>
+                        <select class="form-select" id="aPromoActive">
+                            <option value="false">Nonaktif</option>
+                            <option value="true">Aktif</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label class="form-label">Judul Promo</label><input type="text" class="form-input" id="aPromoTitle" placeholder="PROMO SPESIAL!"></div>
+                    <div class="form-group"><label class="form-label">Deskripsi Promo</label><input type="text" class="form-input" id="aPromoDesc" placeholder="Diskon 20%..."></div>
+                    <div class="form-group"><label class="form-label">Berakhir Pada</label><input type="datetime-local" class="form-input" id="aPromoEnd"></div>
+                    <button class="btn-submit-app" onclick="savePromo()"><i class="fas fa-save"></i> Simpan Promo</button>
+                </div>
+
+                <!-- Settings -->
+                <div class="admin-panel-app" id="apanel-settings">
+                    <div class="form-group"><label class="form-label">Username</label><input type="text" class="form-input" id="aUsername"></div>
+                    <div class="form-group"><label class="form-label">Password Baru (kosongkan jika tidak ganti)</label><input type="text" class="form-input" id="aPassword"></div>
+                    <button class="btn-submit-app" onclick="saveCreds()"><i class="fas fa-key"></i> Update Kredensial</button>
+
+                    <div class="danger-zone">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Zona Berbahaya</h4>
+                        <button class="btn-submit-app danger" onclick="resetData()"><i class="fas fa-trash"></i> Reset Semua Data</button>
+                    </div>
+                    <button class="btn-submit-app gray" onclick="logoutAdmin()" style="margin-top:12px;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GENERIC EDIT MODAL (Products, Categories, Testimonials, FAQ) -->
+    <div class="modal-overlay" id="editModal">
+        <div class="modal">
+            <div class="modal-handle"></div>
+            <div class="modal-header">
+                <div class="modal-title" id="editModalTitle"><i class="fas fa-edit"></i> Edit</div>
+                <button class="modal-close" onclick="closeModal('editModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="editModalFields"></div>
+            <button class="btn-submit-app" id="editModalSaveBtn"><i class="fas fa-save"></i> Simpan</button>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMsg">Berhasil!</span>
+    </div>
+
+    <script>
+        // ==========================================
+        // DEFAULT DATA
+        // ==========================================
+        const DEFAULT_DATA = {
+            brand: {
+                name: "REGI MINA FARM",
+                tag: "LAMPUNG",
+                heroTitle: "REGI MINA FARM<br><span>LAMPUNG</span>",
+                heroDesc: "Menyediakan ikan segar, bibit unggul, dan pakan berkualitas langsung dari farm.",
+                aboutDesc: "REGI MINA FARM LAMPUNG adalah usaha budidaya dan penjualan ikan terpercaya di Lampung. Didirikan oleh M. Regi Maulana, kami menyediakan ikan segar, bibit unggul, dan pakan berkualitas dengan harga terjangkau."
+            },
+            owner: {
+                name: "M. Regi Maulana",
+                role: "Founder & Owner REGI MINA FARM"
+            },
+            contact: {
+                waNumber: "6281234567890",
+                address: "Lampung, Indonesia",
+                mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.4120669808984!2d105.2665!3d-5.3971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMjMnNTAuMCJTIDEwNcKwMTUnNTkuNCJF!5e0!3m2!1sid!2sid!4v1700000000000",
+                ig: "",
+                fb: "",
+                tt: ""
+            },
+            promo: {
+                active: false,
+                title: "PROMO SPESIAL!",
+                desc: "Diskon 20% untuk pembelian bibit minimal 500 ekor",
+                end: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString().slice(0, 16)
+            },
+            credentials: { username: "admin", password: "regi2025" },
+            categories: [
+                { id: "lele", name: "Lele Konsumsi", emoji: "🐟", desc: "Ikan lele segar untuk konsumsi." },
+                { id: "nila", name: "Nila Konsumsi", emoji: "🐠", desc: "Ikan nila segar untuk konsumsi." },
+                { id: "bibit", name: "Bibit Ikan", emoji: "🐟", desc: "Bibit ikan berkualitas unggul." },
+                { id: "cacing", name: "Cacing Sutra", emoji: "🪱", desc: "Pakan alami untuk ikan." },
+                { id: "pakan", name: "Pakan Ikan", emoji: "🌾", desc: "Pakan ikan berkualitas." }
+            ],
+            products: [
+                { name: "Lele Ukuran 8-9", category: "lele", subcategory: "Ukuran Besar", price: "21000", unit: "Kg", stock: "120 Kg", min: "± 9-9 ekor/Kg", emoji: "🐟", badge: "bestseller" },
+                { name: "Lele Ukuran 10-11", category: "lele", subcategory: "Ukuran Besar", price: "21000", unit: "Kg", stock: "98 Kg", min: "± 10-11 ekor/Kg", emoji: "🐟", badge: "bestseller" },
+                { name: "Lele Ukuran 2-5", category: "lele", subcategory: "Ukuran Kecil", price: "10000", unit: "Kg", stock: "60 Kg", min: "± 2-5 ekor/Kg", emoji: "🐟", badge: "promo" },
+                { name: "Lele Indukan", category: "lele", subcategory: "Ukuran Kecil", price: "30000", unit: "Kg", stock: "45 Kg", min: "± 1-2 ekor/Kg", emoji: "🐟", badge: "promo" },
+                { name: "Nila Ukuran Besar", category: "nila", subcategory: "Nila Besar", price: "30000", unit: "Kg", stock: "100 Kg", min: "± 1-2 ekor/Kg", emoji: "🐠", badge: "" },
+                { name: "Nila Sedang", category: "nila", subcategory: "Nila Sedang", price: "27000", unit: "Kg", stock: "80 Kg", min: "± 3-4 ekor/Kg", emoji: "🐠", badge: "" },
+                { name: "Bibit Nila", category: "nila", subcategory: "Nila Besar", price: "30000", unit: "Kg", stock: "190 Kg", min: "± 500-1.000 ekor/kg", emoji: "🐠", badge: "baru" },
+                { name: "Nila Jumbo", category: "nila", subcategory: "Nila Sedang", price: "35000", unit: "Kg", stock: "50 Kg", min: "± 1 ekor/Kg", emoji: "🐠", badge: "" },
+                { name: "Bibit Nila", category: "bibit", subcategory: "Nila", price: "20000", unit: "Kg", stock: "180 Kg", min: "± 500-1.000 ekor/kg", emoji: "🐟", badge: "" },
+                { name: "Bibit Lele", category: "bibit", subcategory: "Lele", price: "18000", unit: "Kg", stock: "200 Kg", min: "± 1.000-1.500 ekor/kg", emoji: "🐟", badge: "" },
+                { name: "Bibit Gurame", category: "bibit", subcategory: "Nila", price: "25000", unit: "Kg", stock: "90 Kg", min: "± 200-500 ekor/kg", emoji: "🐟", badge: "" },
+                { name: "Bibit Patin", category: "bibit", subcategory: "Lele", price: "32000", unit: "Kg", stock: "80 Kg", min: "± 500-1.000 ekor/kg", emoji: "🐟", badge: "" },
+                { name: "Cacing Sutra 100 gram", category: "cacing", subcategory: "Per Gelas", price: "10000", unit: "Gelas", stock: "30 Gelas", min: "± 100 gram", emoji: "🪱", badge: "" },
+                { name: "Cacing Sutra 250 ml", category: "cacing", subcategory: "Per Gelas", price: "22000", unit: "Gelas", stock: "20 Gelas", min: "± 250 ml", emoji: "🪱", badge: "" },
+                { name: "Cacing Sutra 500 ml", category: "cacing", subcategory: "Per Gayung", price: "40000", unit: "Gayung", stock: "15 Gelas", min: "± 500 ml", emoji: "🪱", badge: "" },
+                { name: "Cacing Sutra 1 liter", category: "cacing", subcategory: "Per Gayung", price: "75000", unit: "Liter", stock: "8 Liter", min: "± 1 liter", emoji: "🪱", badge: "" },
+                { name: "Pelet 781", category: "pakan", subcategory: "Pelet", price: "14000", unit: "Kg", stock: "100 Kg", min: "Kemasan 1 kg", emoji: "🌾", badge: "" },
+                { name: "Pelet 594", category: "pakan", subcategory: "Pelet", price: "18000", unit: "Kg", stock: "80 Kg", min: "Kemasan 1 kg", emoji: "🌾", badge: "" },
+                { name: "Tepung Ikan", category: "pakan", subcategory: "Tepung", price: "12000", unit: "Kg", stock: "60 Kg", min: "Kemasan 1 kg", emoji: "🌾", badge: "" },
+                { name: "Pakan Starter", category: "pakan", subcategory: "Tepung", price: "16000", unit: "Kg", stock: "40 Kg", min: "Kemasan 1 kg", emoji: "🌾", badge: "" }
+            ],
+            testimonials: [
+                { name: "Pak Budi Santoso", city: "Bandar Lampung", rating: 5, text: "Ikan lelenya segar banget, pengiriman cepat. Recommended!" },
+                { name: "Bu Siti Aminah", city: "Metro", rating: 5, text: "Bibit nilanya sehat dan tumbuh cepat. Sudah 3x order disini." },
+                { name: "Mas Andi Wijaya", city: "Pringsewu", rating: 4, text: "Harga bersaing, kualitas bagus. Owner ramah dan fast respon." },
+                { name: "Pak Joko Susilo", city: "Kalianda", rating: 5, text: "Pelayanan profesional, ikan selalu fresh. Terima kasih!" }
+            ],
+            faq: [
+                { q: "Berapa minimal order?", a: "Minimal order untuk konsumsi 1 kg, untuk bibit minimal 100 ekor. Untuk pembelian besar bisa nego harga langsung via WhatsApp." },
+                { q: "Apakah bisa COD?", a: "Ya, COD tersedia untuk wilayah Bandar Lampung dan sekitarnya. Untuk luar kota via ekspedisi." },
+                { q: "Berapa lama pengiriman?", a: "Area Bandar Lampung 1-2 hari, luar kota 2-4 hari." },
+                { q: "Metode pembayaran apa saja?", a: "Transfer bank (BCA, BRI, Mandiri), DANA, OVO, GoPay, atau QRIS." },
+                { q: "Ikan dikirim hidup atau mati?", a: "Konsumsi dikirim segar dengan es. Bibit dikirim hidup dengan packing oksigen + garansi DOA." },
+                { q: "Apakah ada garansi ikan mati?", a: "Ya, untuk bibit kami berikan garansi DOA sampai tujuan. Wajib video unboxing untuk klaim." }
+            ]
+        };
+
+        const SK = "regiMinaFarmHybrid_v1";
+        let appData = loadData();
+        let cart = JSON.parse(localStorage.getItem(SK + "_cart") || "[]");
+        let isLoggedIn = false;
+        let currentCategory = null;
+        let currentSubFilter = "semua";
+        let pageHistory = ['home'];
+        let currentEdit = { type: null, index: -1 };
+
+        function loadData() {
+            try {
+                const raw = localStorage.getItem(SK);
+                if (raw) {
+                    const p = JSON.parse(raw);
+                    return {
+                        brand: { ...DEFAULT_DATA.brand, ...p.brand },
+                        owner: { ...DEFAULT_DATA.owner, ...p.owner },
+                        contact: { ...DEFAULT_DATA.contact, ...p.contact },
+                        promo: { ...DEFAULT_DATA.promo, ...p.promo },
+                        credentials: { ...DEFAULT_DATA.credentials, ...p.credentials },
+                        categories: p.categories || DEFAULT_DATA.categories,
+                        products: p.products || DEFAULT_DATA.products,
+                        testimonials: p.testimonials || DEFAULT_DATA.testimonials,
+                        faq: p.faq || DEFAULT_DATA.faq
+                    };
+                }
+            } catch(e) { console.error(e); }
+            return JSON.parse(JSON.stringify(DEFAULT_DATA));
+        }
+
+        function saveData() { localStorage.setItem(SK, JSON.stringify(appData)); }
+        function saveCart() { localStorage.setItem(SK + "_cart", JSON.stringify(cart)); }
+
+        // ==========================================
+        // NAVIGATION
+        // ==========================================
+        function showPage(pageName) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            const target = document.getElementById('page-' + pageName);
+            if (target) target.classList.add('active');
+            if (pageName !== 'products') {
+                pageHistory.push(pageName);
+            }
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            const nav = document.querySelector(`.nav-item[data-nav="${pageName}"]`);
+            if (nav) nav.classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function goBack() {
+            pageHistory.pop();
+            const prev = pageHistory[pageHistory.length - 1] || 'home';
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-' + prev).classList.add('active');
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            const nav = document.querySelector(`.nav-item[data-nav="${prev}"]`);
+            if (nav) nav.classList.add('active');
+        }
+
+        // ==========================================
+        // RENDER
+        // ==========================================
+        function renderAll() {
+            const d = appData;
+            document.getElementById('hBrandName').textContent = d.brand.name;
+            document.getElementById('hBrandTag').textContent = d.brand.tag;
+            document.getElementById('sBrandName').textContent = d.brand.name;
+            document.getElementById('sBrandTag').textContent = d.brand.tag;
+            document.getElementById('heroTitle').innerHTML = d.brand.heroTitle;
+            document.getElementById('heroDesc').textContent = d.brand.heroDesc;
+            document.getElementById('pOwnerName').textContent = d.owner.name;
+            document.getElementById('pOwnerRole').textContent = d.owner.role;
+            document.getElementById('aboutTitle').textContent = d.brand.name + " " + d.brand.tag;
+            document.getElementById('aboutDesc').textContent = d.brand.aboutDesc;
+
+            // About features
+            const featuresList = [
+                { icon: 'fa-check-circle', title: 'Ikan Selalu Segar', desc: 'Langsung dari kolam budidaya' },
+                { icon: 'fa-award', title: 'Bibit Unggul', desc: 'Kualitas terjamin' },
+                { icon: 'fa-tags', title: 'Harga Bersaing', desc: 'Bisa nego untuk pembelian besar' },
+                { icon: 'fa-truck', title: 'Pengiriman Cepat', desc: 'Seluruh wilayah Lampung' }
+            ];
+            document.getElementById('aboutFeatures').innerHTML = featuresList.map(f => `
+                <div class="profile-menu-item">
+                    <div class="icon-box"><i class="fas ${f.icon}"></i></div>
+                    <div class="menu-text"><h4>${f.title}</h4><p>${f.desc}</p></div>
+                </div>
+            `).join('');
+
+            // Contact
+            document.getElementById('contactInfo').innerHTML = `
+                <a href="https://wa.me/${d.contact.waNumber}" target="_blank" class="profile-menu-item">
+                    <div class="icon-box" style="background: rgba(37, 211, 102, 0.15); color: #25D366;"><i class="fab fa-whatsapp"></i></div>
+                    <div class="menu-text"><h4>WhatsApp</h4><p>${d.contact.waNumber}</p></div>
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+                <div class="profile-menu-item">
+                    <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="menu-text"><h4>Alamat</h4><p>${d.contact.address}</p></div>
+                </div>
+            `;
+            document.getElementById('mapFrame').src = d.contact.mapUrl;
+
+            // Home Categories
+            document.getElementById('homeCategoryGrid').innerHTML = d.categories.slice(0, 6).map(c => `
+                <div class="category-card" onclick="openCategory('${c.id}')">
+                    <div class="cat-img">${c.emoji}</div>
+                    <h4>${c.name}</h4>
+                </div>
+            `).join('');
+
+            // Categories List
+            document.getElementById('categoriesList').innerHTML = d.categories.map(c => `
+                <div class="category-list-item" onclick="openCategory('${c.id}')">
+                    <div class="category-list-img">${c.emoji}</div>
+                    <div class="category-list-info">
+                        <h4>${c.name}</h4>
+                        <p>${c.desc}</p>
+                    </div>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            `).join('');
+
+            // Home Testimonials
+            document.getElementById('homeTestimonials').innerHTML = d.testimonials.slice(0, 2).map(t => {
+                const stars = '★'.repeat(t.rating) + '☆'.repeat(5 - t.rating);
+                return `
+                    <div class="info-card">
+                        <div class="head">
+                            <div class="title">${t.name}</div>
+                            <div class="stars">${stars}</div>
+                        </div>
+                        <div class="subtitle"><i class="fas fa-map-marker-alt"></i> ${t.city}</div>
+                        <div class="body">"${t.text}"</div>
+                    </div>
+                `;
+            }).join('');
+
+            // FAQ
+            document.getElementById('faqContainer').innerHTML = d.faq.map((f, i) => `
+                <div class="info-card" onclick="toggleFaq(${i})" style="cursor: pointer;">
+                    <div class="head">
+                        <div class="title">❓ ${f.q}</div>
+                        <i class="fas fa-chevron-down" id="faqIcon${i}"></i>
+                    </div>
+                    <div class="body" id="faqBody${i}" style="display: none; margin-top: 8px;">${f.a}</div>
+                </div>
+            `).join('');
+
+            // Promo banner
+            if (d.promo.active) {
+                document.getElementById('promoBanner').style.display = 'flex';
+                document.getElementById('promoTitleText').textContent = d.promo.title;
+                document.getElementById('promoDescText').textContent = d.promo.desc;
+                updateTimer();
+            } else {
+                document.getElementById('promoBanner').style.display = 'none';
+            }
+
+            updateCartUI();
+        }
+
+        function toggleFaq(i) {
+            const body = document.getElementById('faqBody' + i);
+            const icon = document.getElementById('faqIcon' + i);
+            if (body.style.display === 'none') {
+                body.style.display = 'block';
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                body.style.display = 'none';
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function openCategory(catId) {
+            currentCategory = catId;
+            currentSubFilter = 'semua';
+            const cat = appData.categories.find(c => c.id === catId);
+            if (!cat) return;
+
+            document.getElementById('prodPageTitle').textContent = cat.name;
+            document.getElementById('prodHeroTitle').textContent = cat.name;
+            document.getElementById('prodHeroDesc').textContent = cat.desc;
+            document.getElementById('prodHero').setAttribute('data-emoji', cat.emoji);
+
+            const subs = ['semua', ...new Set(appData.products.filter(p => p.category === catId).map(p => p.subcategory).filter(Boolean))];
+            document.getElementById('filterChips').innerHTML = subs.map(s => `
+                <button class="chip ${s === 'semua' ? 'active' : ''}" onclick="filterSub('${s}', this)">
+                    ${s === 'semua' ? 'Semua' : s}
+                </button>
+            `).join('');
+
+            renderProducts();
+
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-products').classList.add('active');
+            pageHistory.push('products');
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            window.scrollTo(0, 0);
+        }
+
+        function filterSub(sub, el) {
+            currentSubFilter = sub;
+            document.querySelectorAll('#filterChips .chip').forEach(c => c.classList.remove('active'));
+            el.classList.add('active');
+            renderProducts();
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            let products = appData.products.filter(p => p.category === currentCategory);
+            if (currentSubFilter !== 'semua') {
+                products = products.filter(p => p.subcategory === currentSubFilter);
+            }
+            if (products.length === 0) {
+                grid.innerHTML = '<div class="empty-state" style="grid-column: 1/-1;"><i class="fas fa-fish"></i><p>Belum ada produk</p></div>';
+                return;
+            }
+            grid.innerHTML = products.map((p) => `
+                <div class="product-card-app">
+                    <div class="product-img-app">
+                        ${p.emoji}
+                        ${p.badge ? `<div class="badge-app ${p.badge}">${p.badge === 'bestseller' ? 'BEST SELLER' : p.badge.toUpperCase()}</div>` : ''}
+                    </div>
+                    <div class="product-body-app">
+                        <div class="product-name-app">${p.name}</div>
+                        <div class="product-price-label">Harga / ${p.unit}</div>
+                        <div class="product-price-app">Rp ${p.price}<small>/${p.unit}</small></div>
+                        <div class="product-stock-app">
+                            <span class="stock-dot-app"></span>Stok: ${p.stock}
+                        </div>
+                        ${p.min ? `<div class="product-min-app"><i class="fas fa-info-circle"></i> ${p.min}</div>` : ''}
+                        <button class="btn-pesan-app" onclick="addToCartByProduct('${p.name.replace(/'/g, "\\'")}')">
+                            <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ==========================================
+        // CART
+        // ==========================================
+        function addToCartByProduct(name) {
+            const product = appData.products.find(p => p.name === name);
+            if (!product) return;
+            const idx = cart.findIndex(c => c.name === name);
+            if (idx >= 0) cart[idx].qty += 1;
+            else cart.push({ ...product, qty: 1 });
+            saveCart();
+            updateCartUI();
+            showToast(`${product.name} ditambahkan!`, 'success');
+        }
+
+        function updateCartUI() {
+            const total = cart.reduce((s, i) => s + i.qty, 0);
+            const badge = document.getElementById('cartBadge');
+            const navBadge = document.getElementById('navCartBadge');
+            if (total > 0) {
+                badge.textContent = total; badge.style.display = 'flex';
+                navBadge.textContent = total; navBadge.style.display = 'flex';
+            } else {
+                badge.style.display = 'none';
+                navBadge.style.display = 'none';
+            }
+            renderCartPage();
+        }
+
+        function renderCartPage() {
+            const container = document.getElementById('cartContainer');
+            if (cart.length === 0) {
+                container.innerHTML = '<div class="empty-state"><i class="fas fa-shopping-cart"></i><p>Keranjang kosong</p></div>';
+                return;
+            }
+            const total = cart.reduce((s, i) => {
+                const price = parseFloat(i.price.replace(/\./g, ''));
+                return s + (price * i.qty);
+            }, 0);
+            container.innerHTML = cart.map((item, i) => `
+                <div class="cart-item-app">
+                    <div class="cart-emoji">${item.emoji}</div>
+                    <div class="cart-info">
+                        <div class="cart-name">${item.name}</div>
+                        <div class="cart-price">Rp ${item.price}/${item.unit}</div>
+                    </div>
+                    <div class="cart-qty">
+                        <button class="qty-btn-app" onclick="changeQty(${i}, -1)"><i class="fas fa-minus"></i></button>
+                        <span class="qty-val-app">${item.qty}</span>
+                        <button class="qty-btn-app" onclick="changeQty(${i}, 1)"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <button class="cart-remove" onclick="removeCart(${i})"><i class="fas fa-trash"></i></button>
+                </div>
+            `).join('') + `
+                <div class="cart-total-app">
+                    <div class="label">Total Pembayaran</div>
+                    <div class="value">Rp ${total.toLocaleString('id-ID')}</div>
+                </div>
+                <button class="btn-checkout" onclick="checkout()">
+                    <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
+                </button>
+            `;
+        }
+
+        function changeQty(i, d) {
+            cart[i].qty += d;
+            if (cart[i].qty <= 0) cart.splice(i, 1);
+            saveCart(); updateCartUI();
+        }
+
+        function removeCart(i) {
+            cart.splice(i, 1);
+            saveCart(); updateCartUI();
+        }
+
+        function checkout() {
+            if (cart.length === 0) return;
+            let msg = `Halo ${appData.brand.name}, saya ingin pesan:\n\n`;
+            let total = 0;
+            cart.forEach((item, i) => {
+                const price = parseFloat(item.price.replace(/\./g, ''));
+                const sub = price * item.qty;
+                total += sub;
+                msg += `${i + 1}. ${item.name} — ${item.qty} ${item.unit} × Rp ${item.price} = Rp ${sub.toLocaleString('id-ID')}\n`;
+            });
+            msg += `\n💰 Total: Rp ${total.toLocaleString('id-ID')}\n\nNama: \nAlamat: \n\nMohon konfirmasi. Terima kasih!`;
+            window.open(`https://wa.me/${appData.contact.waNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        // ==========================================
+        // BOOKING & CALCULATOR
+        // ==========================================
+        function submitBooking() {
+            const name = document.getElementById('bkName').value.trim();
+            const phone = document.getElementById('bkPhone').value.trim();
+            const date = document.getElementById('bkDate').value;
+            const time = document.getElementById('bkTime').value;
+            const people = document.getElementById('bkPeople').value;
+            if (!name || !phone || !date) {
+                showToast('Isi nama, no HP, dan tanggal!', 'error');
+                return;
+            }
+            const msg = `Halo ${appData.brand.name}, saya ingin booking kunjungan:\n\n` +
+                `👤 Nama: ${name}\n📱 HP: ${phone}\n📅 Tanggal: ${date}\n⏰ Jam: ${time}\n👥 Jumlah: ${people} orang\n\nMohon konfirmasi. Terima kasih!`;
+            window.open(`https://wa.me/${appData.contact.waNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function hitungKalkulator() {
+            const bibit = parseInt(document.getElementById('calcBibit').value) || 0;
+            const jenis = document.getElementById('calcJenis').value;
+            const hargaJual = parseInt(document.getElementById('calcHarga').value) || 0;
+
+            const config = {
+                lele: { hari: 60, fcr: 1.0, berat: 0.15 },
+                nila: { hari: 90, fcr: 1.2, berat: 0.25 },
+                gurame: { hari: 180, fcr: 1.5, berat: 0.5 },
+                mas: { hari: 120, fcr: 1.3, berat: 0.3 }
+            };
+            const c = config[jenis];
+            const totalBerat = bibit * c.berat;
+            const totalPakan = totalBerat * c.fcr * 1.2;
+            const pendapatan = totalBerat * hargaJual;
+
+            document.getElementById('calcResultContent').innerHTML = `
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                    <div style="background:var(--bg-secondary); padding:12px; border-radius:10px; text-align:center;">
+                        <div style="font-size:1.2rem; font-weight:800; color:var(--gold);">${Math.round(totalPakan).toLocaleString('id-ID')}</div>
+                        <div style="font-size:0.68rem; color:var(--text-secondary);">Pakan (kg)</div>
+                    </div>
+                    <div style="background:var(--bg-secondary); padding:12px; border-radius:10px; text-align:center;">
+                        <div style="font-size:1.2rem; font-weight:800; color:var(--gold);">${c.hari}</div>
+                        <div style="font-size:0.68rem; color:var(--text-secondary);">Hari Panen</div>
+                    </div>
+                    <div style="background:var(--bg-secondary); padding:12px; border-radius:10px; text-align:center;">
+                        <div style="font-size:1.2rem; font-weight:800; color:var(--gold);">${Math.round(totalBerat).toLocaleString('id-ID')}</div>
+                        <div style="font-size:0.68rem; color:var(--text-secondary);">Total (kg)</div>
+                    </div>
+                    <div style="background:var(--bg-secondary); padding:12px; border-radius:10px; text-align:center;">
+                        <div style="font-size:1rem; font-weight:800; color:var(--gold);">Rp ${Math.round(pendapatan).toLocaleString('id-ID')}</div>
+                        <div style="font-size:0.68rem; color:var(--text-secondary);">Pendapatan</div>
+                    </div>
+                </div>
+                <p style="font-size:0.65rem; color:var(--text-secondary); margin-top:10px; font-style:italic;">* Estimasi kasar. Hasil aktual tergantung kondisi kolam.</p>
+            `;
+            document.getElementById('calcResult').style.display = 'block';
+        }
+
+        function openWA() {
+            window.open(`https://wa.me/${appData.contact.waNumber}`, '_blank');
+        }
+
+        // ==========================================
+        // PROMO TIMER
+        // ==========================================
+        function updateTimer() {
+            if (!appData.promo.active) return;
+            const end = new Date(appData.promo.end).getTime();
+            const diff = end - Date.now();
+            if (diff <= 0) {
+                document.getElementById('promoBanner').style.display = 'none';
+                return;
+            }
+            const d = Math.floor(diff / 86400000);
+            const h = Math.floor((diff % 86400000) / 3600000);
+            const m = Math.floor((diff % 3600000) / 60000);
+            document.getElementById('tD').textContent = String(d).padStart(2, '0');
+            document.getElementById('tH').textContent = String(h).padStart(2, '0');
+            document.getElementById('tM').textContent = String(m).padStart(2, '0');
+        }
+        setInterval(updateTimer, 60000);
+
+        // ==========================================
+        // MODAL
+        // ==========================================
+        function openModal(id) { document.getElementById(id).classList.add('active'); }
+        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+
+        document.querySelectorAll('.modal-overlay').forEach(m => {
+            m.addEventListener('click', (e) => { if (e.target === m) m.classList.remove('active'); });
+        });
+
+        // Sidebar
+        document.getElementById('menuBtn').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.add('active');
+            document.getElementById('sidebarOverlay').classList.add('active');
+        });
+        function closeSidebar() {
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('sidebarOverlay').classList.remove('active');
+        }
+        document.getElementById('sidebarOverlay').addEventListener('click', closeSidebar);
+
+        document.getElementById('cartBtn').addEventListener('click', () => showPage('cart'));
+
+        // Theme toggle
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            const isLight = document.body.classList.contains('light-mode');
+            document.querySelector('#themeToggle i').className = isLight ? 'fas fa-sun' : 'fas fa-moon';
+            localStorage.setItem('regiTheme', isLight ? 'light' : 'dark');
+        });
+        if (localStorage.getItem('regiTheme') === 'light') {
+            document.body.classList.add('light-mode');
+            document.querySelector('#themeToggle i').className = 'fas fa-sun';
+        }
+
+        // ==========================================
+        // ADMIN
+        // ==========================================
+        document.getElementById('adminFab').addEventListener('click', () => {
+            openModal('adminModal');
+            if (isLoggedIn) showAdminDash();
+            else showAdminLogin();
+        });
+
+        function showAdminLogin() {
+            document.getElementById('adminLoginView').style.display = 'block';
+            document.getElementById('adminDashView').style.display = 'none';
+            document.getElementById('adminTitleText').textContent = 'Panel Admin';
+        }
+
+        function showAdminDash() {
+            document.getElementById('adminLoginView').style.display = 'none';
+            document.getElementById('adminDashView').style.display = 'block';
+            document.getElementById('adminTitleText').textContent = 'Dashboard';
+            renderAdminAll();
+            loadAdminForms();
+        }
+
+        function doLogin() {
+            const u = document.getElementById('loginUser').value.trim();
+            const p = document.getElementById('loginPass').value;
+            if (u === appData.credentials.username && p === appData.credentials.password) {
+                isLoggedIn = true;
+                showToast('Login berhasil! 👋', 'success');
+                showAdminDash();
+            } else {
+                showToast('Username/password salah!', 'error');
+            }
+        }
+
+        function logoutAdmin() {
+            isLoggedIn = false;
+            showToast('Logout berhasil', 'info');
+            showAdminLogin();
+            closeModal('adminModal');
+        }
+
+        document.querySelectorAll('.admin-tab-app').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.admin-tab-app').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.admin-panel-app').forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById('apanel-' + tab.dataset.atab).classList.add('active');
+            });
+        });
+
+        function renderAdminAll() {
+            renderDashStats();
+            renderAdminProducts();
+            renderAdminCategories();
+            renderAdminTestimonials();
+            renderAdminFaq();
+        }
+
+        function renderDashStats() {
+            const stats = [
+                { icon: 'fa-fish', label: 'Produk', value: appData.products.length },
+                { icon: 'fa-th-large', label: 'Kategori', value: appData.categories.length },
+                { icon: 'fa-star', label: 'Testimoni', value: appData.testimonials.length },
+                { icon: 'fa-question-circle', label: 'FAQ', value: appData.faq.length }
+            ];
+            document.getElementById('dashStats').innerHTML = stats.map(s => `
+                <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:14px; padding:16px; text-align:center;">
+                    <i class="fas ${s.icon}" style="font-size:1.5rem; color:var(--accent-light); margin-bottom:8px;"></i>
+                    <div style="font-size:1.4rem; font-weight:800; color:var(--gold);">${s.value}</div>
+                    <div style="font-size:0.68rem; color:var(--text-secondary); margin-top:4px;">${s.label}</div>
+                </div>
+            `).join('');
+        }
+
+        function renderAdminProducts() {
+            const list = document.getElementById('adminProductsList');
+            if (appData.products.length === 0) {
+                list.innerHTML = '<div class="empty-state"><i class="fas fa-fish"></i><p>Belum ada produk</p></div>';
+                return;
+            }
+            list.innerHTML = appData.products.map((p, i) => `
+                <div class="admin-item-app">
+                    <div class="icon-app">${p.emoji}</div>
+                    <div class="info-app">
+                        <div class="name-app">${p.name}</div>
+                        <div class="meta-app">Rp ${p.price}/${p.unit}</div>
+                    </div>
+                    <button class="icon-btn-app edit" onclick="editProduct(${i})"><i class="fas fa-pen"></i></button>
+                    <button class="icon-btn-app delete" onclick="deleteProduct(${i})"><i class="fas fa-trash"></i></button>
+                </div>
+            `).join('');
+        }
+
+        function renderAdminCategories() {
+            const list = document.getElementById('adminCategoriesList');
+            list.innerHTML = appData.categories.map((c, i) => `
+                <div class="admin-item-app">
+                    <div class="icon-app">${c.emoji}</div>
+                    <div class="info-app">
+                        <div class="name-app">${c.name}</div>
+                        <div class="meta-app">${c.desc}</div>
+                    </div>
+                    <button class="icon-btn-app edit" onclick="editCategory(${i})"><i class="fas fa-pen"></i></button>
+                    <button class="icon-btn-app delete" onclick="deleteCategory(${i})"><i class="fas fa-trash"></i></button>
+                </div>
+            `).join('');
+        }
+
+        function renderAdminTestimonials() {
+            const list = document.getElementById('adminTestimonialsList');
+            list.innerHTML = appData.testimonials.map((t, i) => `
+                <div class="admin-item-app">
+                    <div class="icon-app">⭐</div>
+                    <div class="info-app">
+                        <div class="name-app">${t.name}</div>
+                        <div class="meta-app">${t.city} • ${'★'.repeat(t.rating)}</div>
+                    </div>
+                    <button class="icon-btn-app edit" onclick="editTestimonial(${i})"><i class="fas fa-pen"></i></button>
+                    <button class="icon-btn-app delete" onclick="deleteTestimonial(${i})"><i class="fas fa-trash"></i></button>
+                </div>
+            `).join('');
+        }
+
+        function renderAdminFaq() {
+            const list = document.getElementById('adminFaqList');
+            list.innerHTML = appData.faq.map((f, i) => `
+                <div class="admin-item-app">
+                    <div class="icon-app">❓</div>
+                    <div class="info-app">
+                        <div class="name-app">${f.q.substring(0, 40)}${f.q.length > 40 ? '...' : ''}</div>
+                    </div>
+                    <button class="icon-btn-app edit" onclick="editFaq(${i})"><i class="fas fa-pen"></i></button>
+                    <button class="icon-btn-app delete" onclick="deleteFaq(${i})"><i class="fas fa-trash"></i></button>
+                </div>
+            `).join('');
+        }
+
+        function loadAdminForms() {
+            document.getElementById('aBrandName').value = appData.brand.name;
+            document.getElementById('aBrandTag').value = appData.brand.tag;
+            document.getElementById('aHeroTitle').value = appData.brand.heroTitle;
+            document.getElementById('aHeroDesc').value = appData.brand.heroDesc;
+            document.getElementById('aAboutDesc').value = appData.brand.aboutDesc;
+
+            document.getElementById('aOwnerName').value = appData.owner.name;
+            document.getElementById('aOwnerRole').value = appData.owner.role;
+
+            document.getElementById('aWaNumber').value = appData.contact.waNumber;
+            document.getElementById('aAddress').value = appData.contact.address;
+            document.getElementById('aMapUrl').value = appData.contact.mapUrl;
+            document.getElementById('aIgUrl').value = appData.contact.ig || '';
+            document.getElementById('aFbUrl').value = appData.contact.fb || '';
+            document.getElementById('aTtUrl').value = appData.contact.tt || '';
+
+            document.getElementById('aPromoActive').value = String(appData.promo.active);
+            document.getElementById('aPromoTitle').value = appData.promo.title;
+            document.getElementById('aPromoDesc').value = appData.promo.desc;
+            document.getElementById('aPromoEnd').value = appData.promo.end;
+
+            document.getElementById('aUsername').value = appData.credentials.username;
+            document.getElementById('aPassword').value = '';
+        }
+
+        // ============ GENERIC EDIT MODAL ============
+        function openEditModal(type, index, title, fields, data) {
+            currentEdit = { type, index };
+            document.getElementById('editModalTitle').innerHTML = `<i class="fas fa-edit"></i> ${title}`;
+            document.getElementById('editModalFields').innerHTML = fields.map(f => {
+                let val = data[f.key] !== undefined ? data[f.key] : (f.default || '');
+                if (f.type === 'textarea') {
+                    return `<div class="form-group"><label class="form-label">${f.label}</label><textarea class="form-textarea" data-field="${f.key}">${val}</textarea></div>`;
+                }
+                if (f.type === 'select') {
+                    return `<div class="form-group"><label class="form-label">${f.label}</label><select class="form-input" data-field="${f.key}">${f.options.map(o => `<option value="${o.value}" ${o.value === val ? 'selected' : ''}>${o.label}</option>`).join('')}</select></div>`;
+                }
+                return `<div class="form-group"><label class="form-label">${f.label}</label><input type="${f.type || 'text'}" class="form-input" data-field="${f.key}" value="${val}"></div>`;
+            }).join('');
+            openModal('editModal');
+        }
+
+        document.getElementById('editModalSaveBtn').addEventListener('click', () => {
+            const { type, index } = currentEdit;
+            const fields = document.querySelectorAll('#editModalFields [data-field]');
+            const data = {};
+            fields.forEach(f => { data[f.dataset.field] = f.value; });
+
+            if (index === -1) {
+                appData[type].push(data);
+            } else {
+                appData[type][index] = data;
+            }
+            saveData();
+            renderAdminAll();
+            renderAll();
+            closeModal('editModal');
+            showToast('Data tersimpan!', 'success');
+        });
+
+        // ============ PRODUCTS ============
+        function editProduct(i) {
+            const p = i >= 0 ? appData.products[i] : {};
+            const catOptions = appData.categories.map(c => ({ value: c.id, label: c.name }));
+            openEditModal('products', i, i >= 0 ? 'Edit Produk' : 'Tambah Produk', [
+                { key: 'name', label: 'Nama Produk', type: 'text' },
+                { key: 'category', label: 'Kategori', type: 'select', options: catOptions, default: appData.categories[0]?.id },
+                { key: 'subcategory', label: 'Sub Kategori', type: 'text' },
+                { key: 'price', label: 'Harga', type: 'text' },
+                { key: 'unit', label: 'Satuan (Kg/ekor/Liter)', type: 'text', default: 'Kg' },
+                { key: 'stock', label: 'Stok', type: 'text' },
+                { key: 'min', label: 'Min Order', type: 'text' },
+                { key: 'emoji', label: 'Emoji', type: 'text', default: '🐟' },
+                { key: 'badge', label: 'Badge (bestseller/promo/baru)', type: 'text' }
+            ], p);
+        }
+
+        function deleteProduct(i) {
+            if (!confirm(`Hapus produk "${appData.products[i].name}"?`)) return;
+            appData.products.splice(i, 1);
+            saveData(); renderAdminAll(); renderAll();
+            showToast('Produk dihapus!', 'info');
+        }
+
+        // ============ CATEGORIES ============
+        function editCategory(i) {
+            const c = i >= 0 ? appData.categories[i] : {};
+            openEditModal('categories', i, i >= 0 ? 'Edit Kategori' : 'Tambah Kategori', [
+                { key: 'id', label: 'ID Kategori (huruf kecil, tanpa spasi)', type: 'text' },
+                { key: 'name', label: 'Nama Kategori', type: 'text' },
+                { key: 'emoji', label: 'Emoji', type: 'text', default: '🐟' },
+                { key: 'desc', label: 'Deskripsi', type: 'textarea' }
+            ], c);
+        }
+
+        function deleteCategory(i) {
+            if (!confirm(`Hapus kategori "${appData.categories[i].name}"?`)) return;
+            appData.categories.splice(i, 1);
+            saveData(); renderAdminAll(); renderAll();
+            showToast('Kategori dihapus!', 'info');
+        }
+
+        // ============ TESTIMONIALS ============
+        function editTestimonial(i) {
+            const t = i >= 0 ? appData.testimonials[i] : {};
+            openEditModal('testimonials', i, i >= 0 ? 'Edit Testimoni' : 'Tambah Testimoni', [
+                { key: 'name', label: 'Nama Pelanggan', type: 'text' },
+                { key: 'city', label: 'Kota', type: 'text' },
+                { key: 'rating', label: 'Rating (1-5)', type: 'number', default: 5 },
+                { key: 'text', label: 'Testimoni', type: 'textarea' }
+            ], t);
+        }
+
+        function deleteTestimonial(i) {
+            if (!confirm('Hapus testimoni ini?')) return;
+            appData.testimonials.splice(i, 1);
+            saveData(); renderAdminAll(); renderAll();
+            showToast('Testimoni dihapus!', 'info');
+        }
+
+        // ============ FAQ ============
+        function editFaq(i) {
+            const f = i >= 0 ? appData.faq[i] : {};
+            openEditModal('faq', i, i >= 0 ? 'Edit FAQ' : 'Tambah FAQ', [
+                { key: 'q', label: 'Pertanyaan', type: 'text' },
+                { key: 'a', label: 'Jawaban', type: 'textarea' }
+            ], f);
+        }
+
+        function deleteFaq(i) {
+            if (!confirm('Hapus FAQ ini?')) return;
+            appData.faq.splice(i, 1);
+            saveData(); renderAdminAll(); renderAll();
+            showToast('FAQ dihapus!', 'info');
+        }
+
+        // ============ SAVE FORMS ============
+        function saveBrand() {
+            appData.brand.name = document.getElementById('aBrandName').value.trim();
+            appData.brand.tag = document.getElementById('aBrandTag').value.trim();
+            appData.brand.heroTitle = document.getElementById('aHeroTitle').value.trim();
+            appData.brand.heroDesc = document.getElementById('aHeroDesc').value.trim();
+            appData.brand.aboutDesc = document.getElementById('aAboutDesc').value.trim();
+            saveData(); renderAll();
+            showToast('Brand tersimpan!', 'success');
+        }
+
+        function saveOwner() {
+            appData.owner.name = document.getElementById('aOwnerName').value.trim();
+            appData.owner.role = document.getElementById('aOwnerRole').value.trim();
+            saveData(); renderAll();
+            showToast('Owner tersimpan!', 'success');
+        }
+
+        function saveContact() {
+            appData.contact.waNumber = document.getElementById('aWaNumber').value.trim();
+            appData.contact.address = document.getElementById('aAddress').value.trim();
+            appData.contact.mapUrl = document.getElementById('aMapUrl').value.trim();
+            appData.contact.ig = document.getElementById('aIgUrl').value.trim();
+            appData.contact.fb = document.getElementById('aFbUrl').value.trim();
+            appData.contact.tt = document.getElementById('aTtUrl').value.trim();
+            saveData(); renderAll();
+            showToast('Kontak tersimpan!', 'success');
+        }
+
+        function savePromo() {
+            appData.promo.active = document.getElementById('aPromoActive').value === 'true';
+            appData.promo.title = document.getElementById('aPromoTitle').value.trim();
+            appData.promo.desc = document.getElementById('aPromoDesc').value.trim();
+            appData.promo.end = document.getElementById('aPromoEnd').value;
+            saveData(); renderAll();
+            showToast('Promo tersimpan!', 'success');
+        }
+
+        function saveCreds() {
+            const u = document.getElementById('aUsername').value.trim();
+            const p = document.getElementById('aPassword').value;
+            if (!u) { showToast('Username kosong!', 'error'); return; }
+            appData.credentials.username = u;
+            if (p) appData.credentials.password = p;
+            saveData();
+            showToast('Kredensial diupdate!', 'success');
+        }
+
+        function resetData() {
+            if (!confirm('⚠️ Hapus SEMUA data?')) return;
+            if (!confirm('Konfirmasi terakhir?')) return;
+            localStorage.removeItem(SK);
+            localStorage.removeItem(SK + "_cart");
+            appData = JSON.parse(JSON.stringify(DEFAULT_DATA));
+            cart = [];
+            saveData(); saveCart();
+            renderAll(); renderAdminAll(); loadAdminForms();
+            showToast('Data direset!', 'info');
+        }
+
+        // ==========================================
+        // TOAST
+        // ==========================================
+        let toastTimer;
+        function showToast(msg, type = 'info') {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            toast.className = 'toast show ' + type;
+            const icons = { success: 'fa-check-circle', error: 'fa-exclamation-circle', info: 'fa-info-circle' };
+            toast.querySelector('i').className = 'fas ' + icons[type];
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.remove('show'), 2800);
+        }
+
+        // ==========================================
+        // INIT
+        // ==========================================
+        renderAll();
+    </script>
+</body>
+</html>
